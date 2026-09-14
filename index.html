@@ -31,16 +31,273 @@
             </div>
         </header>
         <main>
-            <h2 id="summary">О себе</h2>
-            <h2 id="contacts">Контакты</h2>
-            <h2 id="skils">Навыки</h2>
-            <h2 id="examples">Примеры кода</h2>
-            <h2 id="experience">Проекты и опыт разработки</h2>
-            <h2 id="education">Образование</h2>
-            <h2 id="languages">Языки</h2>
+            <div class="summary-container">
+                <h2 id="summary">О себе</h2>
+
+                <p>Привет! Меня зовут Гузаллия. Я — Frontend-разработчик с бэкграундом в инженерной сфере.</p>
+
+                <h3>Образование и прошлый опыт:</h3>
+                <ul class="marked-list">
+                    <li>
+                        <span class="bold-text">Образование:</span> 
+                        Окончила бакалавриат и магистратуру в Физико-технологическом институте УрФУ по специальности «Электроника и наноэлектроника».
+                    </li>
+                    <li>
+                        <span class="bold-text">Опыт в инженерии:</span>
+                        Работала конструктором в АО «Эйрбург» и АО «Группа СВЭЛ». В процессе работы поняла, что у меня есть интерес к web-разработке.
+                    </li>
+                </ul>
+
+                <h3>Опыт разработки:</h3>
+                <p>
+                    В последние месяцы совмещала основную работу с разработкой внутреннего корпоративного сервиса для АО
+                    «Группа СВЭЛ». Я спроектировала и написала web-приложение, которое автоматизирует расчёт параметров электрооборудования
+                    по ТЗ заказчика (стек React, Vite, JavaScript).
+                </p>
+            </div>
+            <div class="contacts-skils-container">
+                <div class="contacts-container">
+                    <h2 id="contacts">Контакты</h2>
+                    <ul class="unmarked-list">
+                        <li>
+                            <span class="bold-text">Место проживания:</span>
+                            Россия, Екатеринбург
+                        </li>
+                        <li>
+                            <span class="bold-text">Email:</span>
+                            <a href="mailto:ramazanova_guzalliia@mail.ru">ramazanova_guzalliia@mail.ru</a>
+                        </li>
+                        <li>
+                            <span class="bold-text">Discord:</span>
+                            GuzalliiaR
+                        </li>
+                        <li>
+                            <span class="bold-text">GitHub:</span>
+                            ramazanova_guzalliia_49468
+                        </li>
+                    </ul>
+                </div>
+                <div class="skils-container">
+                    <h2 id="skils">Навыки</h2>
+                    <ul class="marked-list">
+                        <li>
+                            <span class="bold-text">Web-development:</span>
+                            <code class="highlighter">HTML5</code>, 
+                            <code class="highlighter">CSS3</code>, 
+                            <code class="highlighter">JavaScript(ES6+)</code>
+                        </li>
+                        <li>
+                            <span class="bold-text">Frameworks/Libraries:</span>
+                            <code class="highlighter">React</code>,
+                            <code class="highlighter">Redux Toolkit</code>
+                        </li>
+                        <li>
+                            <span class="bold-text">Methodologies:</span>
+                            <code class="highlighter">FSD</code>,
+                            <code class="highlighter">БЭМ</code>
+                        </li>
+                        <li>
+                            <span class="bold-text">Development tools:</span>
+                            <code class="highlighter">VS Code</code>,
+                            <code class="highlighter">Vite</code>
+                        </li>
+                        <li>
+                            <span class="bold-text">Version-control:</span>
+                            <code class="highlighter">GIT</code>,
+                            <code class="highlighter">GitHub</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="code-container">
+                <h2 id="examples">Примеры кода</h2>
+                <p>Пример декларативного UI-компонента из проекта для <span class="bold-text">АО «Группа СВЭЛ»</span>.</p>
+                
+                <pre class="highlighter-code"><code>import { memo } from "react";
+import { useSelector } from "react-redux";
+import useSelectedReactorFSD from "../../lib/useSelectedReactorFSD";
+import useSelectedCapacitorFCD from "../../lib/useSelectedCapacitorFCD";
+import { selectInputtedValues } from '../../model/firstFormSlice';
+import {
+selectParametersReactorFCD,
+selectParametersCapacitorFCD
+} from '../../model/parametersSlice';
+import { selectorInputtedValueCB } from '../../model/secondFormSlice';
+import styles from './FieldsetSelectDeviceFCD.module.css';
+                        
+const FieldsetSelectDeviceFCD = () => {
+
+const inputtedValues = useSelector(selectInputtedValues);
+const parametersReactorFCD = useSelector(selectParametersReactorFCD);
+const parametersCapacitorFCD = useSelector(selectParametersCapacitorFCD);
+const inputtedValueCapacitorBank = useSelector(selectorInputtedValueCB);
+
+const { selectedReactorTable } = useSelectedReactorFSD(inputtedValues, parametersReactorFCD);
+
+const { selectedCapacitorTable } = useSelectedCapacitorFCD(
+inputtedValues,
+inputtedValueCapacitorBank,
+parametersCapacitorFCD
+);
+                        
+return (
+&ltfieldset className={styles.fieldsetOfSelectedDevices}&gt
+    &ltlegend&gt
+        &lth3 className={styles.legend}&gt
+            Характеристики выбранного оборудования в ФКУ
+        &lt/h3&gt
+    &lt/legend&gt
+
+    &ltdiv className={`${styles.containerInFieldset} ${styles.innerColumns}`}&gt
+        &ltdiv className={styles.columnOfTable}&gt
+            &lttable className={`${styles.tableSelectedCapacitor} tableToExport_CapacitorBank`}&gt
+                &ltcaption&gt
+                    Выбранный конденсатор
+                &lt/caption&gt
+                &ltthead&gt
+                    &lttr&gt
+                        &ltth className="th_color-violet"&gtХарактеристика&lt/th&gt
+                        &ltth className="th_color-violet"&gtЗначение&lt/th&gt
+                    &lt/tr&gt
+                &lt/thead&gt
+                &lttbody id="tableSelectedCapacitor"&gt
+                    {
+                    selectedCapacitorTable.map((row) =&gt (
+                    &lttr key={row.id}&gt
+                        &lttd&gt{row.name}&lt/td&gt
+                        &lttd&gt{ row.value }&lt/td&gt
+                    &lt/tr&gt
+                    ))
+                    }
+                &lt/tbody&gt
+            &lt/table&gt
+        &lt/div&gt
+
+        &ltdiv className={styles.columnOfTable}&gt
+            &lttable className={`${styles.tableSelectedReactor} tableToExport_CurrentsFCD`}&gt
+                &ltcaption&gt
+                    Выбранный реактор
+                &lt/caption&gt
+                &ltthead&gt
+                    &lttr&gt
+                        &ltth className="th_color-violet"&gtХарактеристика&lt/th&gt
+                        &ltth className="th_color-violet"&gtЗначение&lt/th&gt
+                    &lt/tr&gt
+                &lt/thead&gt
+                &lttbody id="tableSelectedReactor"&gt
+                    {
+                    selectedReactorTable.map(row =&gt (
+                    &lttr key={row.id}&gt
+                        &lttd&gt{row.name}&lt/td&gt
+                        &lttd&gt{row.value}&lt/td&gt
+                    &lt/tr&gt
+                    ))
+                    }
+                &lt/tbody&gt
+            &lt/table&gt
+        &lt/div&gt
+    &lt/div&gt
+&lt/fieldset&gt
+)
+};
+
+export default memo(FieldsetSelectDeviceFCD);</code></pre>
+            <p><span class="bold-text">Особенности реализации:</span> Бизнес-логика подбора оборудования полностью инкапсулирована в кастомные хуки, UI-компонент
+            отвечает только за отображение и оптимизирован с помощью <code class="highlighter">React.memo</code>.</p>
+            </div>
+            
+            <div class="experience-container">
+                <h2 id="experience">Проекты и опыт разработки</h2>
+                <ol class="order-list">
+                    <!-- Первый проект -->
+                    <li>
+                        <h3>Web-приложение для расчета электрооборудования | АО «Группа СВЭЛ»</h3>
+                        <ul class="marked-list">
+                            <li>
+                                <span class="bold-text">Описание:</span> Инженерный калькулятор для подбора фильтрокомпенсирующих устройств (ФКУ) или реактора для СТАТКОМ на основе пользовательского ввода.
+                            </li>
+                            <li>
+                                <span class="bold-text">Стек:</span> 
+                                <code class="highlighter">React</code>,
+                                <code class="highlighter">Redux Toolkit</code>,
+                                <code class="highlighter">Vite</code>,
+                                <code class="highlighter">FSD</code>,
+                                <code class="highlighter">CSS Modules</code>
+                            </li>
+                            <li>
+                                <span class="bold-text">Ссылки:</span> находится в приватном доступе
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Второй проект -->
+                    <li>
+                        <h3>Todo-List</h3>
+                        <ul class="marked-list">
+                            <li>
+                                <span class="bold-text">Описание:</span> Классический таск-менеджер для отработки базовых концепций реактивности и управления состоянием.
+                            </li>
+                            <li>
+                                <span class="bold-text">Стек:</span>
+                                <code class="highlighter">React</code>,
+                                <code class="highlighter">Vite</code>,
+                                <code class="highlighter">JavaScript</code>,
+                                <code class="highlighter">CSS Modules</code>
+                            </li>
+                            <li>
+                                <span class="bold-text">Ссылки:</span>
+                                <a href="https://guzalliiar.github.io/Todo-List/">Демо (GitHub Pages)</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Третий проект -->
+                    <li>
+                        <h3>FromBoard-Delivery</h3>
+                        <ul class="marked-list">
+                            <li>
+                                <span class="bold-text">Описание:</span> Сервис доставки, разработанный для глубокой отработки отзывчивой верстки по исходному макету.
+                            </li>
+                            <li>
+                                <span class="bold-text">Стек:</span>
+                                <code class="highlighter">HTML5</code>,
+                                <code class="highlighter">CSS3(БЭМ)</code>,
+                                <code class="highlighter">JavaScript</code>
+                            </li>
+                            <li>
+                                <span class="bold-text">Ссылки:</span>
+                                <a href="https://www.figma.com/design/lXrQSo0hqpH42GsL22vRd9/FromBoard-Delivery--For-Devs---Copy-?node-id=217-0&t=af0Y5eSmzRJSwQbt-1">Дизайн-макет в Figma</a>,
+                                <a href="https://guzalliiar.github.io/FromBoard-Delivery/">Демо (GitHub Pages)</a>,
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="education-container">
+                <h2 id="education">Образование</h2>
+                <h3>Уральский федеральный университет (УрФУ), Екатеринбург:</h3>
+                <ul class="marked-list">
+                    <li>Физико-технологический институт, специализация «Электроника и наноэлектроника»</li>
+                    <li>
+                        Уровень образования:
+                        <ul class="marked-list">
+                            <li><span class="bold-text">Магистр</span> (выпуск 2022 г.)</li>
+                            <li><span class="bold-text">Бакалавр</span> (выпуск 2020 г.)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="languages-container">
+                <h2 id="languages">Языки</h2>
+                <p>
+                    <span class="bold-text">Английский</span>— уровень B1.
+                </p>  
+            </div>
         </main>
-
-
+        
         <footer>
 
         </footer>
