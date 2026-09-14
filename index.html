@@ -69,11 +69,11 @@
                         </li>
                         <li>
                             <span class="bold-text">Discord:</span>
-                            GuzalliiaR
+                            ramazanova_guzalliia_49468
                         </li>
                         <li>
                             <span class="bold-text">GitHub:</span>
-                            ramazanova_guzalliia_49468
+                            <a href="https://github.com/GuzalliiaR" target="_blank" title="Открыть GitHub сосискателя">GuzalliiaR</a>
                         </li>
                     </ul>
                 </div>
@@ -142,63 +142,63 @@ parametersCapacitorFCD
 );
                         
 return (
-&ltfieldset className={styles.fieldsetOfSelectedDevices}&gt
-    &ltlegend&gt
-        &lth3 className={styles.legend}&gt
+&lt;fieldset className={styles.fieldsetOfSelectedDevices}&gt;
+    &lt;legend&gt;
+        &lt;h3 className={styles.legend}&gt;
             Характеристики выбранного оборудования в ФКУ
-        &lt/h3&gt
-    &lt/legend&gt
+        &lt;/h3&gt;
+    &lt;/legend&gt;
 
-    &ltdiv className={`${styles.containerInFieldset} ${styles.innerColumns}`}&gt
-        &ltdiv className={styles.columnOfTable}&gt
-            &lttable className={`${styles.tableSelectedCapacitor} tableToExport_CapacitorBank`}&gt
-                &ltcaption&gt
+    &lt;div className={`${styles.containerInFieldset} ${styles.innerColumns}`}&gt;
+        &lt;div className={styles.columnOfTable}&gt;
+            &lt;table className={`${styles.tableSelectedCapacitor} tableToExport_CapacitorBank`}&gt;
+                &lt;caption&gt;
                     Выбранный конденсатор
-                &lt/caption&gt
-                &ltthead&gt
-                    &lttr&gt
-                        &ltth className="th_color-violet"&gtХарактеристика&lt/th&gt
-                        &ltth className="th_color-violet"&gtЗначение&lt/th&gt
-                    &lt/tr&gt
-                &lt/thead&gt
-                &lttbody id="tableSelectedCapacitor"&gt
+                &lt;/caption&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th className="th_color-violet"&gt;Характеристика&lt;/th&gt;
+                        &lt;th className="th_color-violet"&gt;Значение&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody id="tableSelectedCapacitor"&gt;
                     {
-                    selectedCapacitorTable.map((row) =&gt (
-                    &lttr key={row.id}&gt
-                        &lttd&gt{row.name}&lt/td&gt
-                        &lttd&gt{ row.value }&lt/td&gt
-                    &lt/tr&gt
+                    selectedCapacitorTable.map((row) =&gt; (
+                    &lt;tr key={row.id}&gt;
+                        &lt;td&gt;{row.name}&lt;/td&gt;
+                        &lt;td&gt;{ row.value }&lt;/td&gt;
+                    &lt;/tr&gt;
                     ))
                     }
-                &lt/tbody&gt
-            &lt/table&gt
-        &lt/div&gt
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
 
-        &ltdiv className={styles.columnOfTable}&gt
-            &lttable className={`${styles.tableSelectedReactor} tableToExport_CurrentsFCD`}&gt
-                &ltcaption&gt
+        &lt;div className={styles.columnOfTable}&gt;
+            &lt;table className={`${styles.tableSelectedReactor} tableToExport_CurrentsFCD`}&gt;
+                &lt;caption&gt;
                     Выбранный реактор
-                &lt/caption&gt
-                &ltthead&gt
-                    &lttr&gt
-                        &ltth className="th_color-violet"&gtХарактеристика&lt/th&gt
-                        &ltth className="th_color-violet"&gtЗначение&lt/th&gt
-                    &lt/tr&gt
-                &lt/thead&gt
-                &lttbody id="tableSelectedReactor"&gt
+                &lt;/caption&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th className="th_color-violet"&gt;Характеристика&lt;/th&gt;
+                        &lt;th className="th_color-violet"&gt;Значение&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody id="tableSelectedReactor"&gt;
                     {
-                    selectedReactorTable.map(row =&gt (
-                    &lttr key={row.id}&gt
-                        &lttd&gt{row.name}&lt/td&gt
-                        &lttd&gt{row.value}&lt/td&gt
-                    &lt/tr&gt
+                    selectedReactorTable.map(row =&gt; (
+                    &lt;tr key={row.id}&gt;
+                        &lt;td&gt;{row.name}&lt;/td&gt;
+                        &lt;td&gt;{row.value}&lt;/td&gt;
+                    &lt;/tr&gt;
                     ))
                     }
-                &lt/tbody&gt
-            &lt/table&gt
-        &lt/div&gt
-    &lt/div&gt
-&lt/fieldset&gt
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
 )
 };
 
